@@ -1,6 +1,7 @@
 // ==ClosureCompiler==
 // @compilation_level SIMPLE_OPTIMIZATIONS
 
+// vim:set noet:
 /**
  * @license Highcharts JS v2.3.3 (2012-10-04)
  *
@@ -3023,9 +3024,9 @@ SVGRenderer.prototype = {
 						css(tspan, { cursor: 'pointer' });
 					}
 
-					span = (span.replace(/<(.|\n)*?>/g, '') || ' ')
-						.replace(/&lt;/g, '<')
-						.replace(/&gt;/g, '>');
+					var tmp_div = document.createElement('div');
+					tmp_div.innerHTML = span;
+					span = tmp_div.innerText || tmp_div.textContent;
 
 					// issue #38 workaround.
 					/*if (reverse) {
